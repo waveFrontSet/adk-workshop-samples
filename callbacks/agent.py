@@ -1,3 +1,4 @@
+import logging
 from typing import Optional
 
 from google.adk.agents import LlmAgent
@@ -7,7 +8,10 @@ from google.adk.tools import BaseTool
 from google.adk.tools.tool_context import ToolContext
 from google.genai import types
 
-MODEL = "gemini-2.5-flash"
+from .config import settings
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 # Phrases that should never reach the LLM. In production you would use a
 # dedicated service such as LLM Guard or Model Armor rather than keyword
@@ -40,7 +44,7 @@ def content_guardrail(
     text_lower = last_user_text.lower()
     for phrase in BLOCKED_PHRASES:
         if phrase in text_lower:
-            print(f"[GUARDRAIL] Blocked phrase detected: '{phrase}'")
+            logger.debug("Blocked phrase detected: '%s'", phrase)
             return LlmResponse(
                 content=types.Content(
                     role="model",
@@ -66,7 +70,7 @@ def log_tool_call(
     tool: BaseTool, args: dict, tool_context: ToolContext
 ) -> Optional[dict]:
     """Log every tool call before execution."""
-    print(f"[TOOL LOG] >>> Calling '{tool.name}' with args: {args}")
+    logger.debug("Calling '%s' with args: %s", tool.name, args)
     return None  # don't modify anything
 
 
@@ -77,7 +81,7 @@ def log_tool_response(
     tool: BaseTool, args: dict, tool_context: ToolContext, tool_response: dict
 ) -> Optional[dict]:
     """Log every tool response after execution."""
-    print(f"[TOOL LOG] <<< '{tool.name}' returned: {tool_response}")
+    logger.debug("'%s' returned: %s", tool.name, tool_response)
     return None  # don't modify anything
 
 
@@ -117,7 +121,7 @@ def get_weather(city: str) -> dict:
 # ---------------------------------------------------------------------------
 root_agent = LlmAgent(
     name="guarded_weather_agent",
-    model=MODEL,
+    model=settings.ai_model,
     instruction=(
         "You are a helpful weather assistant. "
         "Use the get_weather tool to answer questions about the weather in cities. "

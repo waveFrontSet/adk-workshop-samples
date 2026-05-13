@@ -1,6 +1,6 @@
 from google.adk.agents import LlmAgent
 
-MODEL = "gemini-2.5-flash"
+from .config import settings
 
 
 def get_weather(city: str) -> dict:
@@ -33,7 +33,7 @@ def get_weather(city: str) -> dict:
 
 root_agent = LlmAgent(
     name="weather_agent",
-    model=MODEL,
+    model=settings.ai_model,
     instruction=(
         "You are a helpful weather assistant. "
         "Use the get_weather tool to answer questions about the weather in cities. "
