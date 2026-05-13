@@ -166,8 +166,8 @@ See https://docs.astral.sh/uv/getting-started/installation/ for other options.
 #### 3. Clone and install dependencies
 
 ```bash
-git clone https://github.com/your-org/hellofresh-workshops.git
-cd hellofresh-workshops
+git clone https://github.com/waveFrontSet/adk-workshop-samples 
+cd adk-workshop-samples
 uv sync
 ```
 
@@ -209,8 +209,8 @@ editor freely.
 In the Cloud Shell terminal:
 
 ```bash
-git clone https://github.com/your-org/hellofresh-workshops.git
-cd hellofresh-workshops
+git clone https://github.com/waveFrontSet/adk-workshop-samples 
+cd adk-workshop-samples
 ```
 
 #### 4. Install dependencies
