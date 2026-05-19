@@ -229,11 +229,17 @@ needed.
 #### 6. Run an agent
 
 ```bash
-uv run adk web simple_tool --port 8080
+uv run adk web simple_tool --port 8080 --allow-origins="*"
 ```
 
 Cloud Shell will show a **Web Preview** button in the toolbar. Click it and
 select **Preview on port 8080** to open the ADK web UI in your browser.
+
+The `--allow-origins="*"` flag is required because Cloud Shell's Web Preview
+serves the UI from a proxied `*.cloudshell.dev` URL, which ADK's CORS
+middleware blocks by default (you'll see `403 Forbidden: origin not allowed`
+on `POST /apps/.../sessions` without it). For a tighter setup, pass the exact
+preview URL instead of `*`.
 
 ---
 
