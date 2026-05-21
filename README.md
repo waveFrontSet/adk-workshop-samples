@@ -149,7 +149,7 @@ done
 #### 1. Install `gcloud` CLI (if not already installed)
 
 Follow the instructions at
-https://cloud.google.com/sdk/docs/install for your platform.
+<https://cloud.google.com/sdk/docs/install> for your platform.
 
 #### 2. Install `uv` (if not already installed)
 
@@ -161,7 +161,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 brew install uv
 ```
 
-See https://docs.astral.sh/uv/getting-started/installation/ for other options.
+See <https://docs.astral.sh/uv/getting-started/installation/> for other options.
 
 #### 3. Clone and install dependencies
 
@@ -181,7 +181,7 @@ Follow the [Authentication](#authentication) section above.
 uv run adk web simple_tool
 ```
 
-Open http://localhost:8000, select the agent in the top-left corner, and start
+Open <http://localhost:8000>, select the agent in the top-left corner, and start
 chatting. Replace `simple_tool` with any of the other package names
 (`callbacks`, `subagents`, `agent_tools`).
 
@@ -194,14 +194,14 @@ authenticated with your GCP credentials.
 
 #### 1. Open Cloud Shell
 
-Go to https://console.cloud.google.com and click the **Activate Cloud Shell**
+Go to <https://console.cloud.google.com> and click the **Activate Cloud Shell**
 button (terminal icon in the top-right toolbar). Alternatively, open it
-directly at https://shell.cloud.google.com.
+directly at <https://shell.cloud.google.com>.
 
 #### 2. (Optional) Open the Cloud Shell IDE
 
 For a full editor experience, click **Open Editor** in the Cloud Shell toolbar
-or go to https://ide.cloud.google.com. You can switch between the terminal and
+or go to <https://ide.cloud.google.com>. You can switch between the terminal and
 editor freely.
 
 #### 3. Clone the repository
@@ -229,13 +229,13 @@ needed.
 #### 6. Run an agent
 
 ```bash
-uv run adk web simple_tool --port 8080 --allow-origins="*"
+uv run adk web simple_tool --port 8080 --allow_origins="*"
 ```
 
 Cloud Shell will show a **Web Preview** button in the toolbar. Click it and
 select **Preview on port 8080** to open the ADK web UI in your browser.
 
-The `--allow-origins="*"` flag is required because Cloud Shell's Web Preview
+The `--allow_origins="*"` flag is required because Cloud Shell's Web Preview
 serves the UI from a proxied `*.cloudshell.dev` URL, which ADK's CORS
 middleware blocks by default (you'll see `403 Forbidden: origin not allowed`
 on `POST /apps/.../sessions` without it). For a tighter setup, pass the exact
