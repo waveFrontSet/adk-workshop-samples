@@ -229,7 +229,7 @@ needed.
 #### 6. Run an agent
 
 ```bash
-uv run adk web simple_tool --port 8080 --allow_origins="*"
+uv run adk web --port 8080 --allow_origins="*"
 ```
 
 Cloud Shell will show a **Web Preview** button in the toolbar. Click it and
